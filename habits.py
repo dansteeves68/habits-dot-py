@@ -116,8 +116,6 @@ def main(args):
     habits = get_habits(rows=rows)
     habit_days = get_habit_days(habits=habits, rows=rows)
     report(habit_days=habit_days, num_days=int(args.days))
-    # report = get_new_report(habits=habits,
-    #                         day_habits=day_habits)
 
 
 if __name__ == '__main__':
