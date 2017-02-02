@@ -1,0 +1,31 @@
+2017-02-02 med
+2017-02-01 ex med
+2017-01-31 ex med
+2017-01-30 med
+2017-01-29 med ex
+2017-01-28 med
+2017-01-27 ex
+2017-01-26 med ex
+2017-01-25 med
+2017-01-24 med ex
+2017-01-23 med
+2017-01-22 med ex
+2017-01-21 med ex
+2017-01-20 med
+2017-01-19 med
+2017-01-18 med ex
+2017-01-17 ex med
+2017-01-16 med
+2017-01-15 ex
+2017-01-13 ex
+2017-01-12 none
+2017-01-11 ex med
+2017-01-10 med
+2017-01-09 med ex
+2017-01-08 med ex
+2017-01-07 med
+2017-01-06 none
+2017-01-05 med
+
+habit|med|Meditate|4/5|streak
+habit|ex|Exercise|6/10|nostreak
