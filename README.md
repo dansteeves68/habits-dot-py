@@ -35,12 +35,35 @@ Text file habit tracking and command line reporting
 - Set up and track your habits in `habits.txt`
 - Report on your habits using `habits.py`
 
+**Usage**
+
     usage: habits.py [-h] [--file FILE] [--days DAYS]
     
     optional arguments:
       -h, --help            show this help message and exit
       --file FILE, -f FILE
       --days DAYS, -d DAYS
+
+**Format for `habits.txt`**
+
+Blank lines for readability are ok.
+
+Habit lines: Set up each habit with a line like this.
+
+    habit|code|Name|num1/num2|[streak/nostreak]
+
+- The line is pipe delimited
+- Start with the _keyword_ "habit"
+- Short _code_ you want to use for tracking
+- _Name_ for use in reporting
+- _Goal_ as a two numbers separated by slash, e.g. 4/5 for "four days out of five"
+- _Streak reporting_ use "streak" to report streaks and "nostreak" to skip them
+
+Daily record lines: Each day you do one of your habits record it like this.
+
+    YYYY-MM-DD code [code ...]
+
+You can record each habit on its own line, or you can add multiple habits per line. If you miss all your habits on a day you can skip the record, or write the date and use the code "none".
 
 ## Optional
 
