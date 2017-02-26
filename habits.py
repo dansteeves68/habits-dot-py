@@ -72,9 +72,7 @@ def get_streak(days, last_day):
     return ', current streak %s days' % (min(breaks) + 1)
 
 
-def report_habit(habit={}, num_days=7):
-    today = datetime.datetime.today()
-    today = datetime.datetime(today.year, today.month, today.day)
+def report_habit(today, habit={}, num_days=7):
     if max(habit['days']) == today:
         last_day = today
     else:
@@ -104,24 +102,47 @@ def report_habit(habit={}, num_days=7):
                         spark=' '.join(spark))
 
 
-def report(habit_days={}, num_days=10):
-    print 'Habit Report %s\n-----------------------' % datetime.datetime.today().strftime('%Y-%m-%d')
+def get_format_today(as_of):
+    if as_of:
+        today = datetime.datetime.strptime(as_of, '%Y-%m-%d')
+    else:
+        today = datetime.datetime.today()
+    today = datetime.datetime(today.year, today.month, today.day)
+    return today
+
+
+def report(as_of, habit_days={}, num_days=10):
+    today = get_format_today(as_of)
+    print 'Habit Report as of %s\n-----------------------' % today.strftime('%Y-%m-%d')
     for habit in habit_days:
-        report_habit(habit=habit_days[habit], num_days=num_days)
-    pass
+        report_habit(today=today,
+                     habit=habit_days[habit],
+                     num_days=num_days)
+    return
 
 
 def main(args):
     rows = get_rows(filename=args.file)
     habits = get_habits(rows=rows)
     habit_days = get_habit_days(habits=habits, rows=rows)
-    report(habit_days=habit_days, num_days=int(args.days))
+    report(as_of=args.as_of,
+           habit_days=habit_days,
+           num_days=int(args.days))
+    return
 
 
 if __name__ == '__main__':
     p = argparse.ArgumentParser()
+    p.add_argument('--as-of', '-a',
+                   metavar='YYYY-MM-DD',
+                   help='Instead of today, report as of this date')
+    p.add_argument('--days', '-d',
+                   metavar='INT',
+                   help='Number of days to report',
+                   default=10)
     p.add_argument('--file', '-f',
+                   metavar='FILE',
+                   help='Path to habits file',
                    default='habits.txt')
-    p.add_argument('--days', '-d', default=10)
     args = p.parse_args()
     main(args=args)
